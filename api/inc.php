@@ -1,5 +1,5 @@
 <?php
-function _get($action): string
+function _get($token, $action): string
 {
     $curl = curl_init();
     curl_setopt_array($curl, [
@@ -12,6 +12,7 @@ function _get($action): string
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_HTTPHEADER => [
+            "Authorization: Bearer $token",
             'User-Agent: PHP-8.2'
         ],
     ]);
@@ -20,7 +21,7 @@ function _get($action): string
     return $response;
 }
 
-function _post($action, $data): string
+function _post($token, $action, $data): string
 {
     $curl = curl_init();
     curl_setopt_array($curl, [
@@ -34,6 +35,7 @@ function _post($action, $data): string
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS => $data,
         CURLOPT_HTTPHEADER => [
+            "Authorization: Bearer $token",
             'User-Agent: PHP-8.2',
             'Content-Type: application/json'
         ]

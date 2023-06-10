@@ -7,16 +7,14 @@ if (!$jo) {
     exit;
 }
 
-$action = $jo->action;
-$method = $jo->method;
-if (empty($action) || empty($method)) {
+if (empty($jo->action) || empty($jo->method)) {
     exit;
 }
 
-if (strtolower($method) === 'get') {
-    echo _get($action);
+if (strtolower($jo->method) === 'get') {
+    echo _get($jo->token, $jo->action);
 } else {
     !empty(empty($jo->data)) or die();
     $data = base64_decode($jo->data);
-    echo _post($action, $data);
+    echo _post($jo->token, $jo->action, $data);
 }
