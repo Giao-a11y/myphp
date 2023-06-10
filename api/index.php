@@ -1,5 +1,6 @@
 <?php
 include 'inc.php';
+header('Content-Type: application/json');
 
 $form = file_get_contents('php://input');
 $jo = json_decode($form);
