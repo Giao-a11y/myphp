@@ -7,7 +7,7 @@ if (!$jo) {
     exit;
 }
 
-if (empty($jo->action) || empty($jo->method || empty($jo->token))) {
+if (empty($jo->action) || empty($jo->method) || empty($jo->token)) {
     exit;
 }
 
