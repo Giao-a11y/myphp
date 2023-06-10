@@ -1,2 +1,3 @@
 <?php
-echo time();
+$form = file_get_contents('php://input');
+echo $form;
